@@ -138,11 +138,6 @@ for (let i = 0; i < formInputs.length; i++) {
 const navigationLinks = document.querySelectorAll("[data-nav-link]");
 const pages = document.querySelectorAll("[data-page]");
 
-console.log("Navigation links found:", navigationLinks.length);
-console.log("Pages found:", pages.length);
-navigationLinks.forEach((link, index) => console.log(`Link ${index}:`, link.innerText));
-pages.forEach((page, index) => console.log(`Page ${index}:`, page.dataset.page));
-
 for (let i = 0; i < navigationLinks.length; i++) {
   navigationLinks[i].addEventListener("click", function () {
     const clickedPage = this.innerText.toLowerCase().trim();
@@ -176,14 +171,56 @@ if (clientsList) {
   });
 }
 
-// EmailJS
-(function () {
-  emailjs.init("2Qt2Tx3B_YeZCfFWq"); 
+// Page loader — show minimum 3s, then hide after DOM ready
+;(function () {
+  var loader = document.getElementById('page-loader');
+  if (!loader) return;
+
+  var MIN_DISPLAY = 1500; // minimum ms to show loader
+  var startTime = Date.now();
+
+  // Block scrolling while loading
+  document.documentElement.style.overflow = 'hidden';
+
+  var done = false;
+  function hideLoader() {
+    if (done) return;
+    done = true;
+    var fill = loader.querySelector('.loader-bar-fill');
+    if (fill) fill.style.width = '100%';
+    setTimeout(function () {
+      loader.classList.add('loaded');
+      document.documentElement.style.overflow = '';
+    }, 180);
+  }
+
+  function scheduleHide() {
+    var elapsed = Date.now() - startTime;
+    var remaining = MIN_DISPLAY - elapsed;
+    setTimeout(hideLoader, remaining > 0 ? remaining : 0);
+  }
+
+  // Wait for DOM ready, then wait out the remaining minimum time
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', scheduleHide);
+  } else {
+    scheduleHide();
+  }
+
+  // Hard fallback: never exceed 8s
+  setTimeout(hideLoader, 8000);
 })();
 
+// EmailJS - lazy init, only runs when contact form is submitted
 document.getElementById("contact-form").addEventListener("submit", function (e) {
   e.preventDefault();
 
+  if (typeof emailjs === 'undefined') {
+    alert("Dịch vụ email chưa sẵn sàng, vui lòng thử lại sau giây lát.");
+    return;
+  }
+
+  emailjs.init("2Qt2Tx3B_YeZCfFWq");
   emailjs.sendForm("service_uq48gps", "template_fqwyrec", this)
     .then(function () {
       alert("Email được gửi thành công!");
