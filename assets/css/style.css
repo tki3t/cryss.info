@@ -231,6 +231,11 @@ article.active {
   100% { opacity: 1; transform: translateY(0); }
 }
 
+@keyframes fadeIn {
+  0%   { opacity: 0; }
+  100% { opacity: 1; }
+}
+
 .h2,
 .h3,
 .h4,
@@ -329,10 +334,10 @@ main {
   margin-bottom: 15px;
   max-height: 112px;
   overflow: hidden;
-  transition: var(--transition-2);
+  transition: max-height var(--transition-2);
 }
 
-.sidebar.active { max-height: 405px; }
+.sidebar.active { height: auto; max-height: 405px; }
 
 .sidebar-info {
   position: relative;
@@ -398,13 +403,11 @@ main {
 .info_more-btn span { display: none; }
 
 .sidebar-info_more {
-  opacity: 0;
   visibility: hidden;
-  transition: var(--transition-2);
+  transition: visibility var(--transition-2);
 }
 
 .sidebar.active .sidebar-info_more {
-  opacity: 1;
   visibility: visible;
 }
 
@@ -1804,12 +1807,13 @@ textarea.form-input::-webkit-resizer { display: none; }
   animation: fadeUp 0.5s ease 0.3s backwards;
 }
 
-.sidebar .contacts-list {
-  animation: fadeUp 0.5s ease 0.35s backwards;
-}
+.sidebar .contact-item:nth-child(1) { animation: fadeUp 0.4s ease 0.30s backwards; }
+.sidebar .contact-item:nth-child(2) { animation: fadeUp 0.4s ease 0.38s backwards; }
+.sidebar .contact-item:nth-child(3) { animation: fadeUp 0.4s ease 0.46s backwards; }
+.sidebar .contact-item:nth-child(4) { animation: fadeUp 0.4s ease 0.54s backwards; }
 
 .sidebar .social-list {
-  animation: fadeUp 0.5s ease 0.45s backwards;
+  animation: fadeUp 0.5s ease 0.62s backwards;
 }
 
 /* About text */
