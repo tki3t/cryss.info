@@ -1789,7 +1789,27 @@ textarea.form-input::-webkit-resizer { display: none; }
 
 /* Sidebar */
 .sidebar {
-  animation: fadeUp 0.5s ease 0.1s backwards;
+  animation: fadeUp 0.5s ease 0.05s backwards;
+}
+
+.sidebar .avatar-box {
+  animation: fadeUp 0.5s ease 0.15s backwards;
+}
+
+.sidebar .info-content {
+  animation: fadeUp 0.5s ease 0.25s backwards;
+}
+
+.sidebar .info_more-btn {
+  animation: fadeUp 0.5s ease 0.3s backwards;
+}
+
+.sidebar .contacts-list {
+  animation: fadeUp 0.5s ease 0.35s backwards;
+}
+
+.sidebar .social-list {
+  animation: fadeUp 0.5s ease 0.45s backwards;
 }
 
 /* About text */
