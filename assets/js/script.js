@@ -220,7 +220,7 @@ document.getElementById("contact-form").addEventListener("submit", function (e) 
     return;
   }
 
-  emailjs.init("2Qt2Tx3B_YeZCfFWq");
+  emailjs.init({ publicKey: "2Qt2Tx3B_YeZCfFWq" });
   emailjs.sendForm("service_uq48gps", "template_fqwyrec", this)
     .then(function () {
       alert("Email được gửi thành công!");
