@@ -12,7 +12,7 @@ User-agent: *
 Allow: /
 `;
 
-  const length = Buffer.byteLength(body);
+  const length = Buffer.byteLength(body, "utf8");
 
   res.status(206);
   res.setHeader("Content-Type", "text/plain; charset=utf-8");
