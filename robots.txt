@@ -1,13 +1,11 @@
-User-agent: *
-Allow: /
-
 User-agent: facebookexternalhit
 Allow: /
 
-User-agent: Twitterbot
+User-agent: Facebot
 Allow: /
 
-User-agent: LinkedInBot
+User-agent: Meta-ExternalAgent
 Allow: /
 
-Sitemap: https://cryss.info/sitemap.xml
+User-agent: *
+Allow: /
