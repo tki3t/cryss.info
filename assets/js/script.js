@@ -231,19 +231,31 @@ document.getElementById("contact-form").addEventListener("submit", function (e) 
   this.reset();
 });
 
-// Visit counter — CounterAPI (free, no auth)
+// Visit counter — Cloudflare Worker + KV
+// Worker URL: đổi thành URL thực sau khi deploy
+// Ví dụ: https://visit-counter.YOUR_SUBDOMAIN.workers.dev/visits/up
+//         hoặc custom route: https://cryss.info/api/visits/up
 (function () {
   var el = document.getElementById('visit-count');
   if (!el) return;
 
-  fetch('https://api.counterapi.dev/v1/cryss-info/site-visits/up')
-    .then(function (r) { return r.json(); })
+  var WORKER_URL = 'https://visit-counter.zudd4work.workers.dev/visits/up';
+
+  fetch(WORKER_URL)
+    .then(function (r) {
+      if (!r.ok) throw new Error('HTTP ' + r.status);
+      return r.json();
+    })
     .then(function (d) {
-      if (d && typeof d.count === 'number') {
-        el.textContent = d.count.toLocaleString('vi-VN');
+      var count = (d && (d.count !== undefined ? d.count : d.value));
+      if (typeof count === 'number') {
+        el.textContent = count.toLocaleString('vi-VN');
+      } else {
+        document.querySelector('.visit-counter').style.display = 'none';
       }
     })
     .catch(function () {
-      el.textContent = '—';
+      var widget = document.querySelector('.visit-counter');
+      if (widget) widget.style.display = 'none';
     });
 })();
