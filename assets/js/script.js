@@ -230,3 +230,20 @@ document.getElementById("contact-form").addEventListener("submit", function (e) 
 
   this.reset();
 });
+
+// Visit counter — CounterAPI (free, no auth)
+(function () {
+  var el = document.getElementById('visit-count');
+  if (!el) return;
+
+  fetch('https://api.counterapi.dev/v1/cryss-info/site-visits/up')
+    .then(function (r) { return r.json(); })
+    .then(function (d) {
+      if (d && typeof d.count === 'number') {
+        el.textContent = d.count.toLocaleString('vi-VN');
+      }
+    })
+    .catch(function () {
+      el.textContent = '—';
+    });
+})();
