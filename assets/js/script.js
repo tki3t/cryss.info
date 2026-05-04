@@ -232,9 +232,6 @@ document.getElementById("contact-form").addEventListener("submit", function (e) 
 });
 
 // Visit counter — Cloudflare Worker + KV
-// Worker URL: đổi thành URL thực sau khi deploy
-// Ví dụ: https://visit-counter.YOUR_SUBDOMAIN.workers.dev/visits/up
-//         hoặc custom route: https://cryss.info/api/visits/up
 (function () {
   var el = document.getElementById('visit-count');
   if (!el) return;
@@ -250,6 +247,7 @@ document.getElementById("contact-form").addEventListener("submit", function (e) 
       var count = (d && (d.count !== undefined ? d.count : d.value));
       if (typeof count === 'number') {
         el.textContent = count.toLocaleString('vi-VN');
+        el.classList.add('counting');
       } else {
         document.querySelector('.visit-counter').style.display = 'none';
       }
