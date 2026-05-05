@@ -50,8 +50,7 @@ export default {
 
     if (increment) {
       count += 1;
-      // Ghi lại (không await để phản hồi nhanh hơn)
-      env.VISITS.put(KV_KEY, String(count));
+      await env.VISITS.put(KV_KEY, String(count));
     }
 
     return corsResponse(request, JSON.stringify({ count }), 200);
