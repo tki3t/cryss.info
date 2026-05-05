@@ -2271,6 +2271,7 @@ textarea.form-input::-webkit-resizer { display: none; }
     opacity: 0;
   }
 
+  .social-visit-row { justify-content: center; gap: 12px; }
   .social-list { justify-content: center; }
 
 

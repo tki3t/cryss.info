@@ -236,7 +236,7 @@ document.getElementById("contact-form").addEventListener("submit", function (e) 
   var el = document.getElementById('visit-count');
   if (!el) return;
 
-  var WORKER_URL = 'https://visit-counter.zudd4work.workers.dev/visits/up';
+  var WORKER_URL = 'https://counter-api-sable.vercel.app/v1/cryss-info/site-visits/up';
 
   fetch(WORKER_URL)
     .then(function (r) {
