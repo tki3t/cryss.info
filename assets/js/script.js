@@ -231,7 +231,7 @@ document.getElementById("contact-form").addEventListener("submit", function (e) 
   this.reset();
 });
 
-// Visit counter — Cloudflare Worker + KV
+
 (function () {
   var el = document.getElementById('visit-count');
   if (!el) return;
