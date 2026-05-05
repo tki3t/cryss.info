@@ -238,7 +238,7 @@ document.getElementById("contact-form").addEventListener("submit", function (e) 
 
   var WORKER_URL = 'https://counter-api-sable.vercel.app/v1/cryss-info/site-visits/up';
 
-  fetch(WORKER_URL)
+  fetch(WORKER_URL, { cache: 'no-store' })
     .then(function (r) {
       if (!r.ok) throw new Error('HTTP ' + r.status);
       return r.json();
