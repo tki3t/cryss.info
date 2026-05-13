@@ -102,6 +102,8 @@
       - #SIDEBAR
     -->
 
+    <div class="sidebar-col">
+
     <aside class="sidebar" data-sidebar>
 
       <div class="sidebar-info">
@@ -140,7 +142,7 @@
             <div class="contact-info">
               <p class="contact-title">Email</p>
 
-              <a href="mailto:contact.cryss@gmail.com" class="contact-link">contact.cryss@gmail.com</a>
+              <a href="mailto:contact.cryss@gmail.com" class="contact-link" title="contact.cryss@gmail.com">contact.cryss@gmail.com</a>
             </div>
 
           </li>
@@ -248,6 +250,70 @@
 
     </aside>
 
+      <!-- ─── Music Player ─────────────────────────────── -->
+      <div class="music-player" id="music-player" data-music-player>
+
+        <!-- Close handle (mobile sheet only) -->
+        <button class="mp-close" id="mp-close" aria-label="Đóng player">
+          <ion-icon name="chevron-down-outline"></ion-icon>
+        </button>
+
+        <!-- Track info -->
+        <div class="mp-info">
+          <div class="mp-title-scroll">
+            <span class="mp-title" id="mp-title">—</span>
+          </div>
+        </div>
+
+        <!-- Progress -->
+        <div class="mp-progress-section">
+          <span class="mp-time-current" id="mp-current">0:00</span>
+          <div class="mp-progress-bar" id="mp-progress-bar"
+               role="slider" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"
+               aria-label="Tiến trình bài hát">
+            <div class="mp-progress-fill" id="mp-progress-fill"></div>
+            <div class="mp-progress-thumb" id="mp-progress-thumb"></div>
+          </div>
+          <span class="mp-time-total" id="mp-duration">0:00</span>
+        </div>
+
+        <!-- Controls + Volume -->
+        <div class="mp-controls">
+          <button class="mp-ctrl mp-ctrl-sm" id="mp-shuffle" aria-label="Phát ngẫu nhiên" title="Shuffle off">
+            <ion-icon name="shuffle-outline"></ion-icon>
+          </button>
+          <button class="mp-ctrl" id="mp-prev" aria-label="Bài trước">
+            <ion-icon name="play-skip-back-outline"></ion-icon>
+          </button>
+          <button class="mp-ctrl mp-ctrl-main" id="mp-play" aria-label="Phát / Tạm dừng">
+            <ion-icon name="play-outline" id="mp-play-icon"></ion-icon>
+          </button>
+          <button class="mp-ctrl" id="mp-next" aria-label="Bài tiếp theo">
+            <ion-icon name="play-skip-forward-outline"></ion-icon>
+          </button>
+          <button class="mp-ctrl mp-ctrl-sm" id="mp-repeat" aria-label="Lặp lại" title="Repeat off">
+            <ion-icon name="repeat-outline"></ion-icon>
+          </button>
+          <div class="mp-vol-wrap">
+            <button class="mp-ctrl mp-ctrl-sm mp-vol-btn" id="mp-mute" aria-label="Âm lượng">
+              <ion-icon name="volume-medium-outline" id="mp-vol-icon"></ion-icon>
+            </button>
+            <div class="mp-vol-popup">
+              <div class="mp-vol-bar" id="mp-vol-bar"
+                   role="slider" aria-valuemin="0" aria-valuemax="100" aria-valuenow="70"
+                   aria-label="Âm lượng">
+                <div class="mp-vol-fill" id="mp-vol-fill" style="width:70%"></div>
+                <div class="mp-vol-thumb" id="mp-vol-thumb" style="left:70%"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <audio id="mp-audio" preload="none"></audio>
+      </div><!-- /.music-player -->
+
+    </div><!-- /.sidebar-col -->
+
 
 
 
@@ -267,15 +333,15 @@
         <ul class="navbar-list">
 
           <li class="navbar-item">
-            <button class="navbar-link  active" data-nav-link>About</button>
+            <button class="navbar-link  active" data-nav-link>ABOUT</button>
           </li>
 
           <li class="navbar-item">
-            <button class="navbar-link" data-nav-link>Resume</button>
+            <button class="navbar-link" data-nav-link>RESUME</button>
           </li>
 
           <li class="navbar-item">
-            <button class="navbar-link" data-nav-link>Contact</button>
+            <button class="navbar-link" data-nav-link>CONTACT</button>
           </li>
 
         </ul>
@@ -293,7 +359,7 @@
       <article class="about  active" data-page="about">
 
         <header>
-          <h2 class="h2 article-title">About me</h2>
+          <h2 class="h2 article-title">ABOUT ME</h2>
         </header>
 
         <section class="about-text">
@@ -328,7 +394,7 @@
                 <h4 class="h4 service-item-title">Video Editor</h4>
 
                 <p class="service-item-text">
-                  Lyrics Video, Visualizer, TVC
+                  Lyrics Video, Visualizer, TVC.
                 </p>
               </div>
 
@@ -615,13 +681,22 @@
       class="footer-link" style="color: #ffdb6d;">tki3t</a>
   </footer>
 
+  <!-- Music overlay + FAB (mobile) -->
+  <div class="music-overlay" id="music-overlay" aria-hidden="true"></div>
+
+  <button class="music-fab" id="music-fab" aria-label="Mở nhạc nền" title="Music Player">
+    <ion-icon name="musical-notes-outline"></ion-icon>
+    <span class="fab-dot" id="fab-dot" aria-hidden="true"></span>
+  </button>
+
   <script src="./assets/js/script.js" defer></script>
+  <script src="./assets/js/music-player.js" defer></script>
   <script src="./assets/js/liquid-ether.js" defer></script>
   <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
   <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js" async></script>
   <script type="module" src="https://cdn.jsdelivr.net/npm/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule defer src="https://cdn.jsdelivr.net/npm/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-  <script disable-devtool-auto src='https://cdn.jsdelivr.net/npm/disable-devtool' defer></script>
+  <!-- <script disable-devtool-auto src='https://cdn.jsdelivr.net/npm/disable-devtool' defer></script> -->
 </body>
 
 </html>
