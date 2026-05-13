@@ -16,7 +16,6 @@
   const prevBtn       = document.getElementById('mp-prev');
   const nextBtn       = document.getElementById('mp-next');
   const shuffleBtn    = document.getElementById('mp-shuffle');
-  const repeatBtn     = document.getElementById('mp-repeat');
   const progressBar   = document.getElementById('mp-progress-bar');
   const progressFill  = document.getElementById('mp-progress-fill');
   const progressThumb = document.getElementById('mp-progress-thumb');
@@ -39,7 +38,7 @@
   let currentIndex  = 0;
   let isPlaying     = false;
   let isShuffle     = false;
-  let repeatMode    = 0;   // 0=off 1=all 2=one
+  let repeatMode    = 1;   // always repeat all
   let isMuted       = false;
   let prevVol       = 0.7; // user's chosen target volume (0–1)
   let dragging      = false;
@@ -252,16 +251,6 @@
     saveSession();
   });
 
-  repeatBtn && repeatBtn.addEventListener('click', () => {
-    repeatMode = (repeatMode + 1) % 3;
-    const icons  = ['repeat-outline', 'repeat-outline', 'repeat-1-outline'];
-    const titles = ['Repeat off', 'Repeat all', 'Repeat one'];
-    const icon = repeatBtn.querySelector('ion-icon');
-    if (icon) icon.setAttribute('name', icons[repeatMode]);
-    repeatBtn.classList.toggle('active', repeatMode > 0);
-    repeatBtn.title = titles[repeatMode];
-    saveSession();
-  });
 
   // ── Progress seek ─────────────────────────────────────────
   function seekTo(e) {
@@ -386,7 +375,7 @@
     prevVol    = typeof saved.vol   === 'number' ? Math.max(0, Math.min(1, saved.vol)) : 0.7;
     isMuted    = !!saved.muted;
     isShuffle  = !!saved.shuffle;
-    repeatMode = (saved.repeat === 0 || saved.repeat === 1 || saved.repeat === 2) ? saved.repeat : 0;
+    repeatMode = 1; // always repeat all (ignore saved)
   }
 
   loadTrack(currentIndex, null, true); // doLoad=true: preload without playing
@@ -399,21 +388,12 @@
     shuffleBtn.title = 'Shuffle on';
   }
 
-  // Restore repeat UI
-  if (repeatMode > 0 && repeatBtn) {
-    const icons  = ['repeat-outline', 'repeat-outline', 'repeat-1-outline'];
-    const titles = ['Repeat off', 'Repeat all', 'Repeat one'];
-    const icon   = repeatBtn.querySelector('ion-icon');
-    if (icon) icon.setAttribute('name', icons[repeatMode]);
-    repeatBtn.classList.add('active');
-    repeatBtn.title = titles[repeatMode];
-  }
 
   // ── Auto-play after loader hides ──────────────────────────
   function attemptAutoplay() {
     if (autoplayDone) return; // safety guard — prevent double-call
     autoplayDone = true;
-    // First visit → always try; return visit → only if was playing
+    // Return visit: only if was playing before
     if (!isFirstVisit && !saved.playing) return;
 
     // Start silent; fade-in kicks in via timeupdate
@@ -426,7 +406,22 @@
         if (pendingAutoplay) setPlayState(true);
         else audio.pause(); // user paused while browser was loading — enforce it
         pendingAutoplay = false;
-      }).catch(() => { pendingAutoplay = false; });
+      }).catch(() => {
+        pendingAutoplay = false;
+        // Browser blocked autoplay (policy) — play on first user gesture
+        const events = ['click', 'touchstart', 'keydown', 'pointerdown'];
+        function onFirstGesture() {
+          events.forEach((ev) => document.removeEventListener(ev, onFirstGesture));
+          if (!isPlaying) {
+            fadeInStart = Date.now();
+            audio.volume = 0;
+            const q = audio.play();
+            if (q !== undefined) q.then(() => setPlayState(true)).catch(() => {});
+            else setPlayState(true);
+          }
+        }
+        events.forEach((ev) => document.addEventListener(ev, onFirstGesture, { once: true, passive: true }));
+      });
     } else {
       if (pendingAutoplay) setPlayState(true);
       pendingAutoplay = false;
