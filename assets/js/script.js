@@ -14,103 +14,6 @@ if (sidebarBtn) { sidebarBtn.addEventListener("click", function () { elementTogg
 
 
 
-// testimonials variables
-const testimonialsItem = document.querySelectorAll("[data-testimonials-item]");
-const modalContainer = document.querySelector("[data-modal-container]");
-const modalCloseBtn = document.querySelector("[data-modal-close-btn]");
-const overlay = document.querySelector("[data-overlay]");
-
-// modal variable
-const modalImg = document.querySelector("[data-modal-img]");
-const modalTitle = document.querySelector("[data-modal-title]");
-const modalText = document.querySelector("[data-modal-text]");
-
-// modal toggle function
-const testimonialsModalFunc = function () {
-  if (modalContainer) modalContainer.classList.toggle("active");
-  if (overlay) overlay.classList.toggle("active");
-}
-
-// add click event to all modal items
-for (let i = 0; i < testimonialsItem.length; i++) {
-
-  testimonialsItem[i].addEventListener("click", function () {
-
-    if (modalImg) { modalImg.src = this.querySelector("[data-testimonials-avatar]").src; }
-    if (modalImg) { modalImg.alt = this.querySelector("[data-testimonials-avatar]").alt; }
-    if (modalTitle) { modalTitle.innerHTML = this.querySelector("[data-testimonials-title]").innerHTML; }
-    if (modalText) { modalText.innerHTML = this.querySelector("[data-testimonials-text]").innerHTML; }
-
-    testimonialsModalFunc();
-
-  });
-
-}
-
-// add click event to modal close button
-if (modalCloseBtn) { modalCloseBtn.addEventListener("click", testimonialsModalFunc); }
-if (overlay) { overlay.addEventListener("click", testimonialsModalFunc); }
-
-
-
-// custom select variables
-const select = document.querySelector("[data-select]");
-const selectItems = document.querySelectorAll("[data-select-item]");
-const selectValue = document.querySelector("[data-selecct-value]");
-const filterBtn = document.querySelectorAll("[data-filter-btn]");
-
-if (select) { select.addEventListener("click", function () { elementToggleFunc(this); }); }
-
-// add event in all select items
-for (let i = 0; i < selectItems.length; i++) {
-  selectItems[i].addEventListener("click", function () {
-
-    let selectedValue = this.innerText.toLowerCase();
-    if (selectValue) { selectValue.innerText = this.innerText; }
-    elementToggleFunc(select);
-    filterFunc(selectedValue);
-
-  });
-}
-
-// filter variables
-const filterItems = document.querySelectorAll("[data-filter-item]");
-
-const filterFunc = function (selectedValue) {
-
-  for (let i = 0; i < filterItems.length; i++) {
-
-    if (selectedValue === "all") {
-      filterItems[i].classList.add("active");
-    } else if (selectedValue === filterItems[i].dataset.category) {
-      filterItems[i].classList.add("active");
-    } else {
-      filterItems[i].classList.remove("active");
-    }
-
-  }
-
-}
-
-// add event in all filter button items for large screen
-let lastClickedBtn = filterBtn[0] || null;
-
-for (let i = 0; i < filterBtn.length; i++) {
-
-  filterBtn[i].addEventListener("click", function () {
-
-    let selectedValue = this.innerText.toLowerCase();
-    if (selectValue) { selectValue.innerText = this.innerText; }
-    filterFunc(selectedValue);
-
-    if (lastClickedBtn) { lastClickedBtn.classList.remove("active"); }
-    this.classList.add("active");
-    lastClickedBtn = this;
-
-  });
-
-}
-
 
 
 // contact form variables
@@ -171,44 +74,73 @@ if (clientsList) {
   });
 }
 
-// Page loader — show minimum 3s, then hide after DOM ready
+// Page loader — show minimum time, then prompt "click to enter"
 ;(function () {
   var loader = document.getElementById('page-loader');
   if (!loader) return;
 
-  var MIN_DISPLAY = 1500; // minimum ms to show loader
+  var MIN_DISPLAY = 1500;
   var startTime = Date.now();
 
   // Block scrolling while loading
   document.documentElement.style.overflow = 'hidden';
 
-  var done = false;
-  function hideLoader() {
-    if (done) return;
-    done = true;
+  var readyToEnter = false;
+  var entering = false;
+
+  function showClickToEnter() {
+    if (readyToEnter || entering) return;
+    // Stop CSS animation and fill bar to 100%
     var fill = loader.querySelector('.loader-bar-fill');
-    if (fill) fill.style.width = '100%';
+    if (fill) {
+      fill.style.animation = 'none';
+      fill.style.width = '100%';
+    }
+    // Short pause so bar visually completes before showing text
     setTimeout(function () {
-      loader.classList.add('loaded');
-      document.documentElement.style.overflow = '';
-    }, 180);
+      loader.classList.add('ready-to-enter');
+      readyToEnter = true;
+    }, 250);
   }
 
-  function scheduleHide() {
+  function enterSite() {
+    if (!readyToEnter || entering) return;
+    entering = true;
+    readyToEnter = false;
+    document.removeEventListener('click', enterSite);
+    document.removeEventListener('touchstart', enterSite);
+
+    // Animate page content in
+    document.body.classList.add('page-entering');
+    // Clean up class after animation finishes (0.1s delay + 0.8s anim = ~0.9s)
+    setTimeout(function () { document.body.classList.remove('page-entering'); }, 1100);
+
+    // Fade out loader
+    loader.classList.add('loaded');
+    document.documentElement.style.overflow = '';
+
+    // Signal music player to start from track 1
+    document.dispatchEvent(new CustomEvent('loaderExited'));
+  }
+
+  document.addEventListener('click', enterSite);
+  document.addEventListener('touchstart', enterSite, { passive: true });
+
+  function scheduleShow() {
     var elapsed = Date.now() - startTime;
     var remaining = MIN_DISPLAY - elapsed;
-    setTimeout(hideLoader, remaining > 0 ? remaining : 0);
+    setTimeout(showClickToEnter, remaining > 0 ? remaining : 0);
   }
 
   // Wait for DOM ready, then wait out the remaining minimum time
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', scheduleHide);
+    document.addEventListener('DOMContentLoaded', scheduleShow);
   } else {
-    scheduleHide();
+    scheduleShow();
   }
 
-  // Hard fallback: never exceed 8s
-  setTimeout(hideLoader, 8000);
+  // Hard fallback: show click-to-enter after 8s at most
+  setTimeout(showClickToEnter, 8000);
 })();
 
 // EmailJS - lazy init, only runs when contact form is submitted

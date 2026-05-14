@@ -42,10 +42,8 @@
   let isMuted       = false;
   let prevVol       = 0.7; // user's chosen target volume (0–1)
   let dragging      = false;
-  let initTimeSaved   = null;  // time to seek once metadata is loaded
-  let fadeInStart     = null;  // wall-clock ms when current track started playing
-  let pendingAutoplay = false; // guard against ghost-play when user pauses during autoplay load
-  let autoplayDone    = false; // ensure attemptAutoplay runs at most once
+  let initTimeSaved = null;  // time to seek once metadata is loaded
+  let fadeInStart   = null;  // wall-clock ms when current track started playing
 
   // ── Session Storage ────────────────────────────────────────
   const SS_KEY = 'mp_session';
@@ -53,12 +51,9 @@
   function saveSession() {
     try {
       sessionStorage.setItem(SS_KEY, JSON.stringify({
-        idx:     currentIndex,
         vol:     prevVol,
         muted:   isMuted,
         shuffle: isShuffle,
-        repeat:  repeatMode,
-        playing: isPlaying,
       }));
     } catch (e) {}
   }
@@ -175,7 +170,6 @@
   }
 
   function pauseTrack() {
-    pendingAutoplay = false; // cancel in-flight autoplay promise
     audio.pause();
     setPlayState(false);
     saveSession();
@@ -347,10 +341,11 @@
 
   function closePlayer() {
     player.classList.add('mp-closing');
+    if (overlay) overlay.classList.add('closing');
     player.addEventListener('animationend', function onEnd() {
       player.removeEventListener('animationend', onEnd);
       player.classList.remove('mobile-open', 'mp-closing');
-      if (overlay) { overlay.classList.remove('active'); overlay.setAttribute('aria-hidden', 'true'); }
+      if (overlay) { overlay.classList.remove('active', 'closing'); overlay.setAttribute('aria-hidden', 'true'); }
       document.body.style.overflow = '';
     }, { once: true });
   }
@@ -365,20 +360,16 @@
     if (document.visibilityState === 'hidden') saveSession();
   });
 
-  // ── Init: restore session ─────────────────────────────────
-  const saved        = loadSession();
-  const isFirstVisit = saved === null;
+  // ── Init: restore session (vol / muted / shuffle only) ────
+  // Always start from track 0; never restore play state.
+  const saved = loadSession();
+  currentIndex = 0;
+  prevVol    = saved && typeof saved.vol   === 'number' ? Math.max(0, Math.min(1, saved.vol))   : 0.7;
+  isMuted    = saved ? !!saved.muted   : false;
+  isShuffle  = saved ? !!saved.shuffle : false;
+  repeatMode = 1;
 
-  if (saved) {
-    currentIndex = (Number.isInteger(saved.idx) && saved.idx >= 0 && saved.idx < playlist.length)
-      ? saved.idx : 0;
-    prevVol    = typeof saved.vol   === 'number' ? Math.max(0, Math.min(1, saved.vol)) : 0.7;
-    isMuted    = !!saved.muted;
-    isShuffle  = !!saved.shuffle;
-    repeatMode = 1; // always repeat all (ignore saved)
-  }
-
-  loadTrack(currentIndex, null, true); // doLoad=true: preload without playing
+  loadTrack(currentIndex, null, true); // preload without playing
   audio.volume = isMuted ? 0 : prevVol;
   updateVolUI(isMuted ? 0 : prevVol);
 
@@ -388,64 +379,18 @@
     shuffleBtn.title = 'Shuffle on';
   }
 
-
-  // ── Auto-play after loader hides ──────────────────────────
-  function attemptAutoplay() {
-    if (autoplayDone) return; // safety guard — prevent double-call
-    autoplayDone = true;
-    // Return visit: only if was playing before
-    if (!isFirstVisit && !saved.playing) return;
-
-    // Start silent; fade-in kicks in via timeupdate
-    fadeInStart     = Date.now();
-    pendingAutoplay = true;
-    audio.volume    = 0;
+  // ── Play when user clicks "click to enter" on loader ─────
+  // The click IS the user gesture, so audio.play() is always allowed here.
+  document.addEventListener('loaderExited', function () {
+    currentIndex = 0;
+    fadeInStart  = Date.now();
+    audio.volume = 0;
     const p = audio.play();
     if (p !== undefined) {
-      p.then(() => {
-        if (pendingAutoplay) setPlayState(true);
-        else audio.pause(); // user paused while browser was loading — enforce it
-        pendingAutoplay = false;
-      }).catch(() => {
-        pendingAutoplay = false;
-        // Browser blocked autoplay (policy) — play on first user gesture
-        const events = ['click', 'touchstart', 'keydown', 'pointerdown'];
-        function onFirstGesture() {
-          events.forEach((ev) => document.removeEventListener(ev, onFirstGesture));
-          if (!isPlaying) {
-            fadeInStart = Date.now();
-            audio.volume = 0;
-            const q = audio.play();
-            if (q !== undefined) q.then(() => setPlayState(true)).catch(() => {});
-            else setPlayState(true);
-          }
-        }
-        events.forEach((ev) => document.addEventListener(ev, onFirstGesture, { once: true, passive: true }));
-      });
+      p.then(() => setPlayState(true)).catch(() => {});
     } else {
-      if (pendingAutoplay) setPlayState(true);
-      pendingAutoplay = false;
+      setPlayState(true);
     }
-  }
-
-  // Wait for #page-loader to get class "loaded" (loader done)
-  function waitForLoader(callback) {
-    const loader = document.getElementById('page-loader');
-    if (!loader || loader.classList.contains('loaded')) {
-      callback();
-      return;
-    }
-    const obs = new MutationObserver(() => {
-      if (loader.classList.contains('loaded')) {
-        obs.disconnect();
-        clearTimeout(fallback); // prevent double-fire
-        setTimeout(callback, 350); // wait for loader CSS fade to finish
-      }
-    });
-    obs.observe(loader, { attributes: true, attributeFilter: ['class'] });
-    // Hard fallback after 10 s (cleared if observer fires first)
-    const fallback = setTimeout(() => { obs.disconnect(); callback(); }, 10000);
-  }
-
-  waitForLoader(attemptAutoplay);
+    saveSession();
+  }, { once: true });
 })();

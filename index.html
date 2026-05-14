@@ -11,7 +11,7 @@
   <meta name="description" content="Võ Tất Thành (Cryss) — Video Editor, Content Creator, Graphic Designer đang sinh sống và làm việc tại TP. Hà Nội.">
   <meta name="author" content="tki3t">
   <meta name="owner" content="tki3t">
-  <meta name="keywords" content="cryss, cryssisme, cryss info, vo tat thanh, votatthanh, võ tất thành">
+  <meta name="keywords" content="cryss, cryssisme, cryss info, cryss.info, vo tat thanh, votatthanh, võ tất thành">
   <meta name="robots" content="index, follow">
   <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
   <meta name="bingbot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
@@ -84,11 +84,17 @@
 
   <!-- Page Loader -->
   <div id="page-loader" aria-hidden="true">
+    <div class="loader-strip"></div>
+    <div class="loader-strip"></div>
+    <div class="loader-strip"></div>
+    <div class="loader-strip"></div>
+    <div class="loader-strip"></div>
     <div class="loader-inner">
       <span class="loader-logo">cryssisme</span>
       <div class="loader-bar">
         <div class="loader-bar-fill"></div>
       </div>
+      <span class="loader-click-enter">"CLICK TO ENTER"</span>
     </div>
   </div>
 
@@ -384,7 +390,7 @@
             <li class="service-item">
 
               <div class="service-icon-box">
-                <img src="./assets/images/video.png" alt="Video Editor icon" width="70">
+                <img src="./assets/images/video.png" alt="Video Editor icon" width="70" loading="lazy" decoding="async">
               </div>
 
               <div class="service-content-box">
@@ -400,7 +406,7 @@
             <li class="service-item">
 
               <div class="service-icon-box">
-                <img src="./assets/images/content-creator.png" alt="Content Creator icon" width="70">
+                <img src="./assets/images/content-creator.png" alt="Content Creator icon" width="70" loading="lazy" decoding="async">
               </div>
 
               <div class="service-content-box">
@@ -416,7 +422,7 @@
             <li class="service-item">
 
               <div class="service-icon-box">
-                <img src="./assets/images/design.png" alt="Designer icon" width="70">
+                <img src="./assets/images/design.png" alt="Designer icon" width="70" loading="lazy" decoding="async">
               </div>
 
               <div class="service-content-box">
@@ -432,7 +438,7 @@
             <li class="service-item">
 
               <div class="service-icon-box">
-                <img src="./assets/images/photo.png" alt="Photography icon" width="70">
+                <img src="./assets/images/photo.png" alt="Photography icon" width="70" loading="lazy" decoding="async">
               </div>
 
               <div class="service-content-box">
@@ -458,37 +464,37 @@
 
               <li class="clients-item">
                 <a href="https://www.youtube.com/@nguyenhuongly" target="_blank" rel="noopener noreferrer">
-                  <img src="./assets/images/LyMedia.png" alt="Ly Media logo">
+                  <img src="./assets/images/LyMedia.png" alt="Ly Media logo" loading="lazy" decoding="async">
                 </a>
               </li>
 
               <li class="clients-item">
                 <a href="https://www.youtube.com/c/1967music" target="_blank" rel="noopener noreferrer">
-                  <img src="./assets/images/1967logo.png" alt="1967 Music logo">
+                  <img src="./assets/images/1967logo.png" alt="1967 Music logo" loading="lazy" decoding="async">
                 </a>
               </li>
 
               <li class="clients-item">
                 <a href="https://www.youtube.com/@orinnmusic" target="_blank" rel="noopener noreferrer">
-                  <img src="./assets/images/orinn.png" alt="Orinn Music logo">
+                  <img src="./assets/images/orinn.png" alt="Orinn Music logo" loading="lazy" decoding="async">
                 </a>
               </li>
 
               <li class="clients-item">
                 <a href="https://metub.net/" target="_blank" rel="noopener noreferrer">
-                  <img src="./assets/images/metub.png" alt="Metub Network logo">
+                  <img src="./assets/images/metub.png" alt="Metub Network logo" loading="lazy" decoding="async">
                 </a>
               </li>
 
               <li class="clients-item">
                 <a href="https://www.youtube.com/@HoaHongDaiMusicVN" target="_blank" rel="noopener noreferrer">
-                  <img src="./assets/images/HHDMusic.png" alt="Hoa Hồng Dại Music logo">
+                  <img src="./assets/images/HHDMusic.png" alt="Hoa Hồng Dại Music logo" loading="lazy" decoding="async">
                 </a>
               </li>
 
               <li class="clients-item">
                 <a href="https://www.youtube.com/@RapVietUndergroundOfficial" target="_blank" rel="noopener noreferrer">
-                  <img src="./assets/images/RV.png" alt="Rap Việt Underground logo">
+                  <img src="./assets/images/RV.png" alt="Rap Việt Underground logo" loading="lazy" decoding="async">
                 </a>
               </li>
             </ul>
@@ -504,7 +510,7 @@
       <article class="resume" data-page="resume">
 
         <header>
-          <h2 class="h2 article-title">Resume</h2>
+          <h2 class="h2 article-title">RESUME</h2>
         </header>
 
         <!-- <h6 class="about-text">Coming soon...</h6> -->
@@ -630,7 +636,7 @@
       <article class="contact" data-page="contact">
 
         <header>
-          <h2 class="h2 article-title">Contact</h2>
+          <h2 class="h2 article-title">CONTACT</h2>
         </header>
 
         <section class="mapbox" data-mapbox>
@@ -656,12 +662,14 @@
 
             <textarea name="message" class="form-input" placeholder="Your Message" required data-form-input></textarea>
 
-            <div class="cf-turnstile" data-sitekey="0x4AAAAAABhVJT39qNzGLjPl"></div>
+            <div class="turnstile-btn-row">
+              <div class="cf-turnstile" data-sitekey="0x4AAAAAABhVJT39qNzGLjPl"></div>
 
-            <button class="form-btn" type="submit" disabled data-form-btn>
+              <button class="form-btn" type="submit" disabled data-form-btn>
               <ion-icon name="paper-plane"></ion-icon>
               <span>Send Message</span>
             </button>
+            </div>
 
           </form>
 
@@ -713,7 +721,7 @@
   <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js" async></script>
   <script type="module" src="https://cdn.jsdelivr.net/npm/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule defer src="https://cdn.jsdelivr.net/npm/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-  <script disable-devtool-auto src='https://cdn.jsdelivr.net/npm/disable-devtool' defer></script>
+  <!-- <script disable-devtool-auto src='https://cdn.jsdelivr.net/npm/disable-devtool' defer></script> -->
 </body>
 
 </html>
