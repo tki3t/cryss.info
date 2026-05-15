@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>cryssisme — Võ Tất Thành | Video Editor &amp; Content Creator</title>
+
+  <!-- SEO -->
+  <meta name="description" content="Võ Tất Thành (Cryss) — Video Editor, Content Creator, Graphic Designer đang sinh sống và làm việc tại TP. Hà Nội.">
+  <meta name="author" content="tki3t">
+  <meta name="owner" content="tki3t">
+  <meta name="keywords" content="cryss, cryssisme, cryss info, cryss.info, vo tat thanh, votatthanh, võ tất thành">
+  <meta name="robots" content="index, follow">
+  <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+  <meta name="bingbot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+  <link rel="canonical" href="https://cryss.info/">
+
+  <!-- Security -->
+  <meta http-equiv="X-Content-Type-Options" content="nosniff">
+  <meta http-equiv="X-XSS-Protection" content="1; mode=block">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self' https: data: 'unsafe-inline' 'unsafe-eval';">
+  <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
+  <meta http-equiv="Permissions-Policy" content="geolocation=(), microphone=(), camera=()">
+
+  <!-- PWA / Mobile -->
+  <meta name="theme-color" content="#121212">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="cryssisme">
+  <meta name="format-detection" content="telephone=no">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://cryss.info/">
+  <meta property="og:site_name" content="cryssisme">
+  <meta property="og:title" content="cryssisme — Võ Tất Thành | Video Editor & Content Creator">
+  <meta property="og:description"
+    content="Võ Tất Thành (Cryss) — Video Editor, Content Creator, Graphic Designer đang sinh sống và làm việc tại TP. Hà Nội.">
+  <meta property="og:locale" content="vi_VN">
+  <!-- Primary OG image: JPG (max compatibility with Facebook crawler) -->
+  <meta property="og:image" content="https://cryss.info/assets/images/CryssGB-V2.jpg">
+  <meta property="og:image:secure_url" content="https://cryss.info/assets/images/CryssGB-V2.jpg">
+  <meta property="og:image:type" content="image/jpeg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="cryssisme — Võ Tất Thành | Video Editor & Content Creator">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:url" content="https://cryss.info/">
+  <meta name="twitter:title" content="cryssisme — Võ Tất Thành | Video Editor & Content Creator">
+  <meta name="twitter:description"
+    content="Võ Tất Thành (Cryss) — Video Editor, Content Creator, Graphic Designer đang sinh sống và làm việc tại TP. Hà Nội.">
+  <meta name="twitter:image" content="https://cryss.info/assets/images/CryssGB-V2.jpg">
+  <meta name="twitter:image:alt" content="cryssisme — Võ Tất Thành | Video Editor & Content Creator">
+
+  <!-- Favicon -->
+  <link rel="shortcut icon" href="./assets/images/logo.jpg" type="image/jpeg">
+  <link rel="icon" href="./assets/images/logo.jpg" type="image/jpeg">
+
+  <link rel="preload" as="image" href="./assets/images/logo.jpg">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net">
+  <link rel="preconnect" href="https://cdn.emailjs.com">
+  <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
+  <link rel="dns-prefetch" href="https://cdn.emailjs.com">
+  <link rel="dns-prefetch" href="https://challenges.cloudflare.com">
+
+  <link rel="stylesheet" href="./assets/css/style.css">
+
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@200..900&display=swap"
+    media="print" onload="this.media='all'">
+  <noscript>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@200..900&display=swap">
+  </noscript>
+</head>
+
+<body>
+
+  <!-- Page Loader -->
+  <div id="page-loader" aria-hidden="true">
+    <div class="loader-strip"></div>
+    <div class="loader-strip"></div>
+    <div class="loader-strip"></div>
+    <div class="loader-strip"></div>
+    <div class="loader-strip"></div>
+    <div class="loader-inner">
+      <span class="loader-logo">cryssisme</span>
+      <div class="loader-bar">
+        <div class="loader-bar-fill"></div>
+      </div>
+      <span class="loader-click-enter">"CLICK TO ENTER"</span>
+    </div>
+  </div>
+
+  <!--
+    - #MAIN
+  -->
+
+  <main>
+
+    <!--
+      - #SIDEBAR
+    -->
+
+    <div class="sidebar-col">
+
+    <aside class="sidebar" data-sidebar>
+
+      <div class="sidebar-info">
+
+        <figure class="avatar-box">
+          <img src="./assets/images/logo.jpg" alt="Võ Tất Thành" width="80" fetchpriority="high" decoding="async">
+        </figure>
+
+        <div class="info-content">
+          <h1 class="name" title="Richard hanrick">Võ Tất Thành (Cryss)</h1>
+
+          <p class="title">Video Editor/Content Creator
+          </p>
+        </div>
+
+        <button class="info_more-btn" data-sidebar-btn>
+          <span>Show Contacts</span>
+
+          <ion-icon name="chevron-down"></ion-icon>
+        </button>
+
+      </div>
+
+      <div class="sidebar-info_more">
+
+        <div class="separator"></div>
+
+        <ul class="contacts-list">
+
+          <li class="contact-item">
+
+            <div class="icon-box">
+              <ion-icon name="mail-outline"></ion-icon>
+            </div>
+
+            <div class="contact-info">
+              <p class="contact-title">Email</p>
+
+              <a href="mailto:contact.cryss@gmail.com" class="contact-link" title="contact.cryss@gmail.com">contact.cryss@gmail.com</a>
+            </div>
+
+          </li>
+
+          <li class="contact-item">
+
+            <div class="icon-box">
+              <ion-icon name="phone-portrait-outline"></ion-icon>
+            </div>
+
+            <div class="contact-info">
+              <p class="contact-title">Phone</p>
+
+              <a href="https://zalo.me/0333577503" class="contact-link">+84 333577503</a>
+            </div>
+
+          </li>
+
+          <li class="contact-item">
+
+            <div class="icon-box">
+              <ion-icon name="calendar-outline"></ion-icon>
+            </div>
+
+            <div class="contact-info">
+              <p class="contact-title">Birthday</p>
+
+              <time datetime="1982-06-23">July 05, 2003</time>
+            </div>
+
+          </li>
+
+          <li class="contact-item">
+
+            <div class="icon-box">
+              <ion-icon name="location-outline"></ion-icon>
+            </div>
+
+            <div class="contact-info">
+              <p class="contact-title">Location</p>
+
+              <address>Ha Noi, Vietnam</address>
+            </div>
+
+          </li>
+
+        </ul>
+
+        <div class="separator"></div>
+
+        <div class="social-visit-row">
+
+        <ul class="social-list">
+
+          <li class="social-item">
+            <a href="https://www.facebook.com/cryss.is.me" class="social-link" target="_blank"
+              rel="noopener noreferrer">
+              <ion-icon name="logo-facebook"></ion-icon>
+            </a>
+          </li>
+
+          <li class="social-item">
+            <a href="https://www.youtube.com/@cryss4051" class="social-link" target="_blank" rel="noopener noreferrer">
+              <ion-icon name="logo-youtube"></ion-icon>
+            </a>
+          </li>
+
+          <li class="social-item">
+            <a href="https://www.instagram.com/cryss.is.me" class="social-link" target="_blank"
+              rel="noopener noreferrer">
+              <ion-icon name="logo-instagram"></ion-icon>
+            </a>
+          </li>
+
+          <li class="social-item">
+            <a href="https://www.tiktok.com/@cryss.is.me" class="social-link" target="_blank" rel="noopener noreferrer">
+              <ion-icon name="logo-tiktok"></ion-icon>
+            </a>
+          </li>
+
+          <li class="social-item">
+            <a href="https://discord.com/users/940551064288129036" class="social-link" target="_blank"
+              rel="noopener noreferrer">
+              <ion-icon name="logo-discord"></ion-icon>
+            </a>
+          </li>
+
+          <li class="social-item">
+            <a href="https://steamcommunity.com/id/cryssisme/" class="social-link" target="_blank"
+              rel="noopener noreferrer">
+              <ion-icon name="logo-steam"></ion-icon>
+            </a>
+          </li>
+
+        </ul>
+
+        <div class="visit-counter">
+          <ion-icon name="eye-outline"></ion-icon>
+          <span id="visit-count">—</span>
+        </div>
+
+        </div><!-- /.social-visit-row -->
+
+      </div>
+
+    </aside>
+
+      <!-- ─── Music Player ─────────────────────────────── -->
+      <div class="music-player" id="music-player" data-music-player>
+
+        <!-- Close handle (mobile sheet only) -->
+        <button class="mp-close" id="mp-close" aria-label="Đóng player">
+          <ion-icon name="chevron-down-outline"></ion-icon>
+        </button>
+
+        <!-- Track info -->
+        <div class="mp-info">
+          <div class="mp-title-scroll">
+            <span class="mp-title" id="mp-title">—</span>
+          </div>
+        </div>
+
+        <!-- Progress -->
+        <div class="mp-progress-section">
+          <span class="mp-time-current" id="mp-current">0:00</span>
+          <div class="mp-progress-bar" id="mp-progress-bar"
+               role="slider" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"
+               aria-label="Tiến trình bài hát">
+            <div class="mp-progress-fill" id="mp-progress-fill"></div>
+            <div class="mp-progress-thumb" id="mp-progress-thumb"></div>
+          </div>
+          <span class="mp-time-total" id="mp-duration">0:00</span>
+        </div>
+
+        <!-- Controls + Volume -->
+        <div class="mp-controls">
+          <button class="mp-ctrl mp-ctrl-sm" id="mp-shuffle" aria-label="Phát ngẫu nhiên" title="Shuffle off">
+            <ion-icon name="shuffle-outline"></ion-icon>
+          </button>
+          <button class="mp-ctrl" id="mp-prev" aria-label="Bài trước">
+            <ion-icon name="play-skip-back-outline"></ion-icon>
+          </button>
+          <button class="mp-ctrl mp-ctrl-main" id="mp-play" aria-label="Phát / Tạm dừng">
+            <ion-icon name="play-outline" id="mp-play-icon"></ion-icon>
+          </button>
+          <button class="mp-ctrl" id="mp-next" aria-label="Bài tiếp theo">
+            <ion-icon name="play-skip-forward-outline"></ion-icon>
+          </button>
+          <div class="mp-vol-wrap">
+            <button class="mp-ctrl mp-ctrl-sm mp-vol-btn" id="mp-mute" aria-label="Âm lượng">
+              <ion-icon name="volume-medium-outline" id="mp-vol-icon"></ion-icon>
+            </button>
+            <div class="mp-vol-popup">
+              <div class="mp-vol-bar" id="mp-vol-bar"
+                   role="slider" aria-valuemin="0" aria-valuemax="100" aria-valuenow="70"
+                   aria-label="Âm lượng">
+                <div class="mp-vol-fill" id="mp-vol-fill" style="width:70%"></div>
+                <div class="mp-vol-thumb" id="mp-vol-thumb" style="left:70%"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <audio id="mp-audio" preload="none"></audio>
+      </div><!-- /.music-player -->
+
+    </div><!-- /.sidebar-col -->
+
+
+
+
+
+    <!--
+      - #main-content
+    -->
+
+    <div class="main-content">
+
+      <!--
+        - #NAVBAR
+      -->
+
+      <nav class="navbar">
+
+        <ul class="navbar-list">
+
+          <li class="navbar-item">
+            <button class="navbar-link  active" data-nav-link>ABOUT</button>
+          </li>
+
+          <li class="navbar-item">
+            <button class="navbar-link" data-nav-link>RESUME</button>
+          </li>
+
+          <li class="navbar-item">
+            <button class="navbar-link" data-nav-link>CONTACT</button>
+          </li>
+
+        </ul>
+
+      </nav>
+
+
+
+
+
+      <!--
+        - #ABOUT
+      -->
+
+      <article class="about  active" data-page="about">
+
+        <header>
+          <h2 class="h2 article-title">ABOUT ME</h2>
+        </header>
+
+        <section class="about-text">
+          <p>
+            Xin chào, tôi là Võ Tất Thành (Cryss) – một nhà sáng tạo nội dung và biên tập video đang sinh sống và làm
+            việc tại TP. Hà Nội.
+          <p>
+            Tôi đã có cơ hội hợp tác với nhiều ca sĩ, nghệ sĩ và đối tác truyền thông về Âm nhạc hàng đầu tại Việt Nam.
+            Mỗi dự án là một trải nghiệm đáng quý giúp tôi hoàn thiện kỹ năng, đồng thời khẳng định phong cách sáng tạo
+            riêng của mình.
+          </p>
+        </section>
+
+
+        <!--
+          - service
+        -->
+
+        <section class="service">
+
+          <h3 class="h3 service-title">What i'm doing</h3>
+
+          <ul class="service-list">
+
+            <li class="service-item">
+
+              <div class="service-icon-box">
+                <img src="./assets/images/video.png" alt="Video Editor icon" width="70" loading="lazy" decoding="async">
+              </div>
+
+              <div class="service-content-box">
+                <h4 class="h4 service-item-title">Video Editor</h4>
+
+                <p class="service-item-text">
+                  Lyrics Video, Visualizer, TVC.
+                </p>
+              </div>
+
+            </li>
+
+            <li class="service-item">
+
+              <div class="service-icon-box">
+                <img src="./assets/images/content-creator.png" alt="Content Creator icon" width="70" loading="lazy" decoding="async">
+              </div>
+
+              <div class="service-content-box">
+                <h4 class="h4 service-item-title">Content Creator</h4>
+
+                <p class="service-item-text">
+                  Quay dựng, phát triển nội dung đa nền tảng.
+                </p>
+              </div>
+
+            </li>
+
+            <li class="service-item">
+
+              <div class="service-icon-box">
+                <img src="./assets/images/design.png" alt="Designer icon" width="70" loading="lazy" decoding="async">
+              </div>
+
+              <div class="service-content-box">
+                <h4 class="h4 service-item-title">Graphic Designer</h4>
+
+                <p class="service-item-text">
+                  Poster, banner, thumbnail.
+                </p>
+              </div>
+
+            </li>
+
+            <li class="service-item">
+
+              <div class="service-icon-box">
+                <img src="./assets/images/photo.png" alt="Photography icon" width="70" loading="lazy" decoding="async">
+              </div>
+
+              <div class="service-content-box">
+                <h4 class="h4 service-item-title">Photography</h4>
+
+                <p class="service-item-text">
+                  Chụp ảnh, xử lý hình ảnh.
+                </p>
+              </div>
+
+            </li>
+
+          </ul>
+          <!--
+          - clients
+        -->
+
+          <section class="clients">
+
+            <h3 class="h3 clients-title">Clients</h3>
+
+            <ul class="clients-list has-scrollbar">
+
+              <li class="clients-item">
+                <a href="https://www.youtube.com/@nguyenhuongly" target="_blank" rel="noopener noreferrer">
+                  <img src="./assets/images/LyMedia.png" alt="Ly Media logo" loading="lazy" decoding="async">
+                </a>
+              </li>
+
+              <li class="clients-item">
+                <a href="https://www.youtube.com/c/1967music" target="_blank" rel="noopener noreferrer">
+                  <img src="./assets/images/1967logo.png" alt="1967 Music logo" loading="lazy" decoding="async">
+                </a>
+              </li>
+
+              <li class="clients-item">
+                <a href="https://www.youtube.com/@orinnmusic" target="_blank" rel="noopener noreferrer">
+                  <img src="./assets/images/orinn.png" alt="Orinn Music logo" loading="lazy" decoding="async">
+                </a>
+              </li>
+
+              <li class="clients-item">
+                <a href="https://metub.net/" target="_blank" rel="noopener noreferrer">
+                  <img src="./assets/images/metub.png" alt="Metub Network logo" loading="lazy" decoding="async">
+                </a>
+              </li>
+
+              <li class="clients-item">
+                <a href="https://www.youtube.com/@HoaHongDaiMusicVN" target="_blank" rel="noopener noreferrer">
+                  <img src="./assets/images/HHDMusic.png" alt="Hoa Hồng Dại Music logo" loading="lazy" decoding="async">
+                </a>
+              </li>
+
+              <li class="clients-item">
+                <a href="https://www.youtube.com/@RapVietUndergroundOfficial" target="_blank" rel="noopener noreferrer">
+                  <img src="./assets/images/RV.png" alt="Rap Việt Underground logo" loading="lazy" decoding="async">
+                </a>
+              </li>
+            </ul>
+
+          </section>
+
+      </article>
+
+      <!--
+        - #RESUME
+      -->
+
+      <article class="resume" data-page="resume">
+
+        <header>
+          <h2 class="h2 article-title">RESUME</h2>
+        </header>
+
+        <!-- <h6 class="about-text">Coming soon...</h6> -->
+
+        <div>
+          <section class="timeline">
+
+            <div class="title-wrapper">
+              <div class="icon-box">
+                <ion-icon name="book-outline"></ion-icon>
+              </div>
+
+              <h3 class="h3">Education</h3>
+            </div>
+
+            <ol class="timeline-list">
+
+              <li class="timeline-item">
+
+                <h4 class="h4 timeline-item-title">Vietnam National University (VNU)</h4>
+
+                <span>2021 — 2025</span>
+
+                <p class="timeline-text">
+                  VNU University of Engineering and Technology
+                </p>
+
+              </li>
+
+            </ol>
+
+          </section>
+
+          <section class="timeline">
+
+            <div class="title-wrapper">
+              <div class="icon-box">
+                <ion-icon name="book-outline"></ion-icon>
+              </div>
+
+              <h3 class="h3">Experience</h3>
+            </div>
+
+            <ol class="timeline-list">
+
+              <li class="timeline-item">
+
+                <h4 class="h4 timeline-item-title">Freelancer</h4>
+                <span>2017 — Present</span>
+
+                <p class="timeline-text">
+                  Video Editor, Designer, Content Creator, Manager,...
+                </p>
+
+              </li>
+
+              <li class="timeline-item">
+
+                <h4 class="h4 timeline-item-title">Ly Media</h4>
+                <span>2021 — Present</span>
+
+                <p class="timeline-text">
+                  Leader, Manager & Video Editor
+                </p>
+
+              </li>
+
+              <li class="timeline-item">
+
+                <h4 class="h4 timeline-item-title">Orinn Music</h4>
+                <span>2022 — 2023</span>
+
+                <p class="timeline-text">
+                  Manager & Video Editor
+                </p>
+
+              </li>
+
+              <li class="timeline-item">
+
+                <h4 class="h4 timeline-item-title">1967 Entertainment</h4>
+                <span>2021 — 2022</span>
+
+                <p class="timeline-text">
+                  Manager & Video Editor
+                </p>
+
+              </li>
+
+              <li class="timeline-item">
+
+                <h4 class="h4 timeline-item-title">Hoa Hồng Dại Music</h4>
+                <span>2018 — 2022</span>
+
+                <p class="timeline-text">
+                  Video Editor
+                </p>
+
+              </li>
+
+              <li class="timeline-item">
+
+                <h4 class="h4 timeline-item-title">Rap Việt Underground</h4>
+                <span>2017 — 2020</span>
+
+                <p class="timeline-text">
+                  Video Editor
+                </p>
+
+              </li>
+
+            </ol>
+
+          </section>
+        </div>
+
+      </article>
+
+      <!--
+        - #CONTACT
+      -->
+
+      <article class="contact" data-page="contact">
+
+        <header>
+          <h2 class="h2 article-title">CONTACT</h2>
+        </header>
+
+        <section class="mapbox" data-mapbox>
+          <figure>
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3725.1534367723884!2d105.78446927599059!3d20.986485689227777!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135accbc4f9620f%3A0xb7c722a4499be85a!2sChung%20c%C6%B0%20Mulberry%20Lane%20to%CC%80a%20E%20Apartment!5e0!3m2!1sen!2s!4v1777650549690!5m2!1sen!2s"
+              width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"></iframe>
+          </figure>
+        </section>
+
+        <section class="contact-form">
+
+          <h3 class="h3 form-title">Contact Form</h3>
+
+          <form id="contact-form" class="form" data-form>
+
+            <div class="input-wrapper">
+              <input type="text" name="fullname" class="form-input" placeholder="Full name" required data-form-input>
+
+              <input type="email" name="email" class="form-input" placeholder="Email address" required data-form-input>
+            </div>
+
+            <textarea name="message" class="form-input" placeholder="Your Message" required data-form-input></textarea>
+
+            <div class="turnstile-btn-row">
+              <div class="cf-turnstile" data-sitekey="0x4AAAAAABhVJT39qNzGLjPl"></div>
+
+              <button class="form-btn" type="submit" disabled data-form-btn>
+              <ion-icon name="paper-plane"></ion-icon>
+              <span>Send Message</span>
+            </button>
+            </div>
+
+          </form>
+
+        </section>
+
+      </article>
+
+    </div>
+
+  </main>
+
+  <footer class="site-footer">
+    © cryssisme 2026 - made by <a href="https://www.facebook.com/tki3t" target="_blank" rel="noopener noreferrer"
+      class="footer-link" style="color: #ffdb6d;">tki3t</a>
+  </footer>
+
+  <!-- Music overlay + FAB (mobile) -->
+  <div class="music-overlay" id="music-overlay" aria-hidden="true"></div>
+
+  <button class="music-fab" id="music-fab" aria-label="Mở nhạc nền" title="Music Player">
+    <ion-icon name="musical-notes-outline"></ion-icon>
+    <span class="fab-dot" id="fab-dot" aria-hidden="true"></span>
+  </button>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Võ Tất Thành",
+    "alternateName": ["Cryss", "cryssisme", "votatthanh", "vo tat thanh", "cryss info", "cryss.info", "võ tất thành"],
+    "url": "https://cryss.info/",
+    "image": "https://cryss.info/assets/images/CryssGB-V2.jpg",
+    "jobTitle": "Video Editor & Content Creator",
+    "worksFor": { "@type": "Organization", "name": "tki3t" },
+    "address": { "@type": "PostalAddress", "addressLocality": "Hà Nội", "addressCountry": "VN" },
+    "sameAs": [
+      "https://www.facebook.com/cryss.is.me",
+      "https://www.youtube.com/@cryss4051",
+      "https://www.instagram.com/cryss.is.me",
+      "https://www.tiktok.com/@cryss.is.me"
+    ]
+  }
+  </script>
+
+  <script src="./assets/js/script.js" defer></script>
+  <script src="./assets/js/music-player.js" defer></script>
+  <script src="./assets/js/liquid-ether.js" defer></script>
+  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js" async></script>
+  <script type="module" src="https://cdn.jsdelivr.net/npm/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule defer src="https://cdn.jsdelivr.net/npm/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+  <!-- <script disable-devtool-auto src='https://cdn.jsdelivr.net/npm/disable-devtool' defer></script> -->
+</body>
+
+</html>

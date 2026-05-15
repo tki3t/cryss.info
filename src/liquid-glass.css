@@ -1,0 +1,236 @@
+/*--------------------------------------------------------------*\
+  liquid-glass.css — iOS 26 inspired glass enhancements
+  Conservative layer on top of style.css.
+  No ::after overrides (breaks stacking context on tab switch).
+  No brightness() increases (makes panels unreadable).
+\*--------------------------------------------------------------*/
+
+/* ── Main content panels + sidebar ── */
+.sidebar,
+article {
+  backdrop-filter: blur(36px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(36px) saturate(180%) !important;
+  box-shadow:
+    inset 0 1.5px 0 rgba(201, 165, 90, 0.18),
+    inset 0 0 0 0.5px rgba(201, 165, 90, 0.06),
+    0 16px 48px rgba(0, 0, 0, 0.65),
+    0 4px 14px rgba(0, 0, 0, 0.40) !important;
+  border-top-color: rgba(201, 165, 90, 0.22) !important;
+  border-left-color: rgba(201, 165, 90, 0.12) !important;
+}
+
+/* Specular: warm amber top-left catch (override white with gold tint) */
+.sidebar::before,
+article::before {
+  background: radial-gradient(
+    ellipse 100% 50% at 18% -4%,
+    rgba(201, 165, 90, 0.12) 0%,
+    transparent 60%
+  ) !important;
+}
+
+/* ── Badge pill under sidebar name ── */
+.info-content .title {
+  backdrop-filter: blur(24px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(24px) saturate(180%) !important;
+  border-top-color: rgba(201, 165, 90, 0.30) !important;
+  box-shadow:
+    inset 0 1px 0 rgba(201, 165, 90, 0.22),
+    0 4px 16px rgba(0, 0, 0, 0.42) !important;
+}
+
+/* ── Navbar ── */
+.navbar {
+  backdrop-filter: blur(32px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(32px) saturate(180%) !important;
+  border-top-color: rgba(201, 165, 90, 0.20) !important;
+  box-shadow:
+    0 -4px 24px rgba(0, 0, 0, 0.55),
+    inset 0 1px 0 rgba(201, 165, 90, 0.16),
+    inset 0 0 0 0.5px rgba(201, 165, 90, 0.05) !important;
+}
+
+/* ── Icon boxes ── */
+.icon-box {
+  backdrop-filter: blur(18px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(18px) saturate(180%) !important;
+  border-top-color: rgba(201, 165, 90, 0.24) !important;
+  box-shadow:
+    inset 0 1px 0 rgba(201, 165, 90, 0.18),
+    0 4px 14px rgba(0, 0, 0, 0.48) !important;
+}
+
+/* ── Site footer ── */
+.site-footer {
+  backdrop-filter: blur(28px) saturate(175%) !important;
+  -webkit-backdrop-filter: blur(28px) saturate(175%) !important;
+  border-top-color: rgba(201, 165, 90, 0.20) !important;
+  box-shadow:
+    inset 0 1px 0 rgba(201, 165, 90, 0.16),
+    0 6px 22px rgba(0, 0, 0, 0.44) !important;
+}
+
+/* Individual image hover still brightens the logo */
+.clients-item img:hover {
+  filter: grayscale(0) !important;
+}
+
+/*--------------------------------------------------------------*\
+  Article switching — remove container fadeUp so only the
+  CONTENT INSIDE animates (FadeIn / BlurText bits).
+  The glass border/frame is instantly visible; height auto-sizes.
+\*--------------------------------------------------------------*/
+article { will-change: transform; transform: translateZ(0); }
+article.active {
+  animation: none !important;
+  opacity: 1;
+}
+
+/*--------------------------------------------------------------*\
+  Loading screen redesign
+\*--------------------------------------------------------------*/
+/* Solid background so FloatingLines can never show through strip gaps */
+#page-loader:not(.loaded) {
+  background: hsl(0, 0%, 4%) !important;
+}
+
+/* CLICK TO ENTER — start offset above, slide down when ready */
+.loader-click-enter {
+  transform: translateY(-20px);
+  transition: opacity 0.55s ease, transform 0.55s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+}
+#page-loader.ready-to-enter .loader-click-enter {
+  transform: translateY(0) !important;
+}
+
+/* Ambient radial glow behind the loader strips */
+.loader-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse 55% 42% at 50% 48%, rgba(201, 165, 90, 0.13) 0%, transparent 65%),
+    radial-gradient(ellipse 85% 65% at 12% 92%, rgba(120, 72, 0, 0.07) 0%, transparent 55%),
+    radial-gradient(ellipse 70% 55% at 88% 8%,  rgba(160, 100, 10, 0.06) 0%, transparent 50%);
+  animation: loaderBgPulse 5s ease-in-out infinite alternate;
+}
+
+@keyframes loaderBgPulse {
+  from { opacity: 0.5; }
+  to   { opacity: 1.0; }
+}
+
+/* Eyebrow subtitle */
+.loader-eyebrow {
+  margin: 0;
+  font-family: 'Unbounded', sans-serif;
+  font-size: clamp(0.42rem, 1.2vw, 0.62rem);
+  font-weight: 300;
+  letter-spacing: 0.38em;
+  text-transform: uppercase;
+  color: rgba(201, 165, 90, 0.55);
+  opacity: 0;
+  animation: loaderFadeIn 0.5s ease 0.05s forwards;
+}
+
+/* Override .loader-logo — remove old CurvedLoop container constraints,
+   render as large gold wordmark */
+.loader-logo {
+  overflow: visible !important;
+  width: auto !important;
+  font-size: clamp(2.4rem, 8vw, 5.5rem) !important;
+  font-weight: 900 !important;
+  letter-spacing: 0.05em !important;
+  color: #c9a55a !important;
+  text-shadow:
+    0 0 55px rgba(201, 165, 90, 0.32),
+    0 0 110px rgba(201, 165, 90, 0.12) !important;
+}
+
+/* Wider progress bar on desktop */
+@media (min-width: 768px) {
+  .loader-bar {
+    width: clamp(160px, 20vw, 260px) !important;
+  }
+}
+
+/* Bottom scrolling marquee */
+.loader-marquee {
+  position: absolute;
+  bottom: clamp(1.5rem, 4vh, 3rem);
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  z-index: 2;
+  pointer-events: none;
+  mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
+  opacity: 0;
+  animation: loaderFadeIn 0.6s ease 0.5s forwards;
+}
+
+.loader-marquee-top {
+  position: absolute;
+  top: clamp(1.5rem, 4vh, 3rem);
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  z-index: 2;
+  pointer-events: none;
+  mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
+  opacity: 0;
+  animation: loaderFadeIn 0.6s ease 0.5s forwards;
+}
+
+.loader-marquee-track {
+  display: inline-flex;
+  white-space: nowrap;
+  animation: loaderMarqueeScroll 30s linear infinite;
+}
+
+.loader-marquee-track span {
+  font-family: 'Unbounded', sans-serif;
+  font-size: clamp(0.38rem, 1.0vw, 0.52rem);
+  font-weight: 300;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: rgba(201, 165, 90, 0.28);
+  padding-right: 0;
+}
+
+@keyframes loaderMarqueeScroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+
+/*--------------------------------------------------------------*\
+  Bug #5: Long mp-title — infinite left-to-right scroll
+\*--------------------------------------------------------------*/
+.mp-title--scrolling {
+  overflow: visible !important;
+  text-overflow: clip !important;
+  text-align: left !important;
+  animation: mpTitleScroll var(--mp-title-dur, 10s) linear infinite;
+  display: inline-block !important;
+}
+@keyframes mpTitleScroll {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(calc(-100% - 2rem)); }
+}
+
+/* Keep loading transition, but avoid opacity fade that makes
+   FloatingLines look like it is above panels during first seconds. */
+body.page-entering main,
+body.page-entering .site-footer,
+body.page-entering .music-fab {
+  animation: pageEnterNoBleed 1.1s cubic-bezier(0.16, 1, 0.3, 1) 0.35s both !important;
+}
+
+@keyframes pageEnterNoBleed {
+  from { transform: scale(0.97) translateY(16px); }
+  to   { transform: scale(1) translateY(0); }
+}
+
