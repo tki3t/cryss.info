@@ -1,6 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
 import ShinyText from '../bits/ShinyText.jsx'
-import CurvedLoop from '../bits/CurvedLoop.jsx'
 
 const MARQUEE_TEXT = 'CRYSS\u00a0\u00a0·\u00a0\u00a0CONTENT CREATOR\u00a0\u00a0·\u00a0\u00a0VIDEO EDITOR\u00a0\u00a0·\u00a0\u00a0GRAPHIC DESIGNER\u00a0\u00a0·\u00a0\u00a0PHOTOGRAPHER\u00a0\u00a0·\u00a0\u00a0HANOI, VN\u00a0\u00a0·\u00a0\u00a0'
 export default function PageLoader({ onEntered }) {
